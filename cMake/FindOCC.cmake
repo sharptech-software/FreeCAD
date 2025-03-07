@@ -67,23 +67,6 @@ else ()
     endif ()
 endif ()
 
-if (OCC_INCLUDE_DIR)
-    file(STRINGS ${OCC_INCLUDE_DIR}/Standard_Version.hxx OCC_MAJOR
-            REGEX "#define OCC_VERSION_MAJOR.*"
-    )
-    string(REGEX MATCH "[0-9]+" OCC_MAJOR ${OCC_MAJOR})
-    file(STRINGS ${OCC_INCLUDE_DIR}/Standard_Version.hxx OCC_MINOR
-            REGEX "#define OCC_VERSION_MINOR.*"
-    )
-    string(REGEX MATCH "[0-9]+" OCC_MINOR ${OCC_MINOR})
-    file(STRINGS ${OCC_INCLUDE_DIR}/Standard_Version.hxx OCC_MAINT
-            REGEX "#define OCC_VERSION_MAINTENANCE.*"
-    )
-    string(REGEX MATCH "[0-9]+" OCC_MAINT ${OCC_MAINT})
-
-    set(OCC_VERSION_STRING "${OCC_MAJOR}.${OCC_MINOR}.${OCC_MAINT}")
-endif ()
-
 # handle the QUIETLY and REQUIRED arguments and set OCC_FOUND to TRUE if
 # all listed variables are TRUE
 include(FindPackageHandleStandardArgs)
